@@ -5,11 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convertir en Devise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Eater&family=Nosifer&display=swap" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:ital,wght@1,300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ultra&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
     <style>
         label {
-           
-            font-family: arial;
+
+            font-family: Playfair Display SC;
             font-size: 25px;
             color: #00353F;
             text-shadow: 1px 2px 1px black;
@@ -19,7 +42,7 @@
 
 
 
-            font-family: arial;
+            font-family: Playfair Display SC;
             background-image: url('https://cdn.pixabay.com/photo/2016/11/14/22/18/beach-1824855_1280.jpg');
             background-size: cover;
             background-position: center;
@@ -39,10 +62,11 @@
         }
 
         h3 {
-            color: #03EA68;
+            color: orange;
             text-shadow: 3px 2px 2px black;
             text-align: center;
             font-size: 30px;
+            font-family: Playfair Display SC;
         }
 
 
@@ -51,13 +75,13 @@
             font-size: 60px;
             text-align: center;
             margin-top: 5%;
-            color: #03EA68;
-            text-shadow: 3px 3px 3px black;
+            color: NAVY;
+            text-shadow: 3px 2px 2px black;
+            font-family: merienda;
         }
 
         form {
             text-align: center;
-
             margin-top: 5%;
 
         }
@@ -68,15 +92,7 @@
             border-radius: 10px;
         }
 
-        .line {
-            width: 50%;
-            margin: 0 auto;
-            border-top: 2px solid #04BBFF;
-            margin-top: 40px;
-            margin-bottom: 40px;
-            box-shadow: 1px 1px 1px black;
 
-        }
 
         input {
             border: none;
@@ -99,6 +115,18 @@
             font-weight: bold;
             border: none;
         }
+
+        .cadre {
+            margin-left: 25%;
+            margin-right: 25%;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            width: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
     </style>
 
 </head>
@@ -106,23 +134,32 @@
 <body>
 
 
-    <h2>Convertir en Devise</h2>
+    <h2>Caribbean Change</h2>
+
+
+    <div class="cadre">
+
+        <form action="./exercicechange.php/convert.php" method="post">
+            <label for="amount"><strong>(Euros) :<strong></label>
+            <input type="text" id="amount" name="amount" required><br><br><br>
+
+            <label for="currency"><strong>Devise de destination :</strong></label>
+            <select id="currency" name="currency" required>
+                <option value="GBP">Livres sterling (GBP)</option>
+                <option value="USD">Dollars américains (USD)</option>
+                <option value="EUR">Euros (EUR)</option>
+                <option value="ARS">Pesos argentins (ARS)</option>
+                <option value="BRL">Réals brésiliens (BRL)</option>
+                <option value="MXN">Pesos mexicains (MXN)</option>
+                <!-- Ajoutez d'autres devises selon vos besoins -->
+            </select>
 
 
 
-    <div class="line"></div>
-    <form action="./exercicechange.php/convert.php" method="post">
-        <label for="amount"><strong>(Euros) :<strong></label>
-        <input type="text" id="amount" name="amount" required><br><br><br>
+            </select>
 
-        <label for="currency"><strong>Devise de destination :</strong></label>
-        <select id="currency" name="currency" required>
-            <option value="GBP">Livres sterling (GBP)</option>
-            <!-- Ajoutez d'autres devises selon vos besoins -->
-        </select>
-
-        <button type="submit">Convertir</button>
-    </form>
+            <button type="submit">Convertir</button>
+        </form>
 
 </body>
 
@@ -168,8 +205,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $converted_amount = $amount * $taux_de_change;
 
 
-                echo "<h3>Résultat de la conversion :</h3>";
-                echo "<p>Le montant en $currency est : $converted_amount $currency</p>";
+                echo "<h3></h3>";
+                echo "<p>$converted_amount $currency</p>";
             } else {
                 echo "<p>Impossible de trouver le taux de change pour la devise spécifiée.</p>";
             }
@@ -181,4 +218,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>Veuillez saisir un montant et sélectionner une devise valide.</p>";
     }
 }
-?><div class="line"></div>
+
+
+?></div>
